@@ -1,8 +1,9 @@
+import queue.ArrayListQueue
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
 internal class ArrayListQueueTest {
-    private val testArrayListQueue:ArrayListQueue<String> = ArrayListQueue<String>()
+    private val testArrayListQueue: ArrayListQueue<String> = ArrayListQueue<String>()
 
     @Test
     fun testEnqueue() {

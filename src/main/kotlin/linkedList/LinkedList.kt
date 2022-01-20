@@ -1,4 +1,4 @@
-package LinkedList
+package linkedList
 
 /**
  * Linked List
@@ -53,7 +53,7 @@ class LinkedList<T> {
     /**
      * Return node at a given index
      */
-    fun nodeAt(index: Int) : Node<T>? {
+    fun nodeAt(index: Int): Node<T>? {
         var itrNode = head
         var itrIndex = 0
 
@@ -67,7 +67,7 @@ class LinkedList<T> {
     /**
      * Insert after node
      */
-    fun insert(value: T, afterNode: Node<T>) : Node<T> {
+    fun insert(value: T, afterNode: Node<T>): Node<T> {
         if (tail == afterNode) {
             append(value)
             return tail!! // throw an exception if tail is null
@@ -83,7 +83,7 @@ class LinkedList<T> {
      * Pop from front of the list
      */
     fun pop(): T? {
-        if (!isEmpty()) size --
+        if (!isEmpty()) size--
         val result = head?.value
         head = head?.next
 
@@ -92,4 +92,46 @@ class LinkedList<T> {
 
         return result
     }
+
+    /**
+     * Remove last position
+     */
+    fun removeLast(): T? {
+        val head = head ?: return null
+
+        if (head.next == null)
+            return pop()
+
+        size--
+        var prevItr = head
+        var currItr = head
+
+        var itr = currItr.next
+        while (itr != null) {
+            prevItr = currItr
+            currItr = itr
+            itr = currItr.next
+        }
+        prevItr.next = null
+        tail = prevItr
+        return currItr.value
+    }
+
+    /**
+     * Remove node after the given node
+     */
+    fun removeAfter(node: Node<T>): T? {
+        val result = node.next?.value
+
+        if (node.next == tail) {
+            tail = node
+        }
+
+        if (node.next != null)
+            size--
+
+        node.next = node.next?.next
+        return result
+    }
+
 }
