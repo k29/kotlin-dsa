@@ -4,7 +4,6 @@ import queue.ArrayListQueue
 
 /**
  * Class for TreeNode.
- * val languages = TreeNode("languages")
  */
 class TreeNode<T>(val value: T) {
     /**
@@ -78,4 +77,23 @@ class TreeNode<T>(val value: T) {
         return result
     }
 }
+
+/*
+
+Usage ->
+
+val java = TreeNode("Java")
+val python = TreeNode("Python")
+
+val languages = TreeNode("Languages")
+
+languages.add(java)
+languages.add(python)
+java.add(TreeNode("java 1.8"))
+
+languages.dfs{it -> println(it.value)}
+println("---")
+languages.bfs { println(it.value) }
+
+ */
 
