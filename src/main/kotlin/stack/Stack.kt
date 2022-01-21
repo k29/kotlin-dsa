@@ -2,7 +2,6 @@ package stack
 
 interface Stack<T> {
     val count: Int
-        get
 
     val isEmpty: Boolean
         get() = count == 0
